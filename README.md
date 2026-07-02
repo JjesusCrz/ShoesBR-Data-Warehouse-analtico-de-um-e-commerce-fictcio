@@ -12,9 +12,7 @@ Este é um projeto de portfólio em Engenharia de Dados, cobrindo um pipeline **
 
 ### Arquitetura do projeto
 
-![Arquitetura do Projeto ShoesBR]
-
-(imgs\architecture.png)
+![Arquitetura do Projeto ShoesBR](imgs\architecture.png)
 
 
 
