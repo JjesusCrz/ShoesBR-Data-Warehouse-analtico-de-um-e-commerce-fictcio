@@ -1,0 +1,117 @@
+version: 2
+
+models:
+
+  - name: stg_clientes
+    description: "Tabela de staging contendo clientes padronizados."
+
+    columns:
+
+      - name: customer_id
+        description: "Identificador único do cliente."
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_name
+        description: "Nome completo do cliente."
+        tests:
+          - not_null
+
+      - name: customer_address
+        description: "Endereço do cliente."
+
+      - name: customer_phone
+        description: "Telefone do cliente."
+
+      - name: customer_email
+        description: "E-mail do cliente."
+
+  - name: stg_produtos
+    description: "Tabela de staging contendo produtos padronizados."
+
+    columns:
+
+      - name: product_id
+        description: "Identificador único do produto."
+        tests:
+          - unique
+          - not_null
+
+      - name: product_name
+        description: "Nome do produto."
+        tests:
+          - not_null
+
+      - name: product_price
+        description: "Preço do produto."
+
+  - name: stg_vendas
+    description: "Tabela de staging contendo vendas padronizadas."
+
+    columns:
+
+      - name: purchase_id
+        description: "Identificador único da venda."
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: "Identificador do cliente."
+
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_clientes')
+                field: customer_id
+
+      - name: product_id
+        description: "Identificador do produto."
+
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_produtos')
+                field: product_id
+
+      - name: purchase_date
+        description: "Data da compra."
+        tests:
+          - not_null
+
+      - name: quantity
+        description: "Quantidade adquirida."
+        tests:
+          - not_null
+
+      - name: total_price
+        description: "Valor total da venda."
+        tests:
+          - not_null
+
+      - name: payment_method
+        description: "Forma de pagamento utilizada."
+
+  - name: stg_estorno
+    description: "Tabela de staging contendo os registros de estornos."
+
+    columns:
+
+      - name: purchase_id
+        description: "Identificador da compra."
+
+      - name: customer_id
+        description: "Identificador do cliente."
+
+      - name: product_id
+        description: "Identificador do produto."
+
+      - name: refund_date
+        description: "Data do estorno."
+
+      - name: refund_reason
+        description: "Motivo do estorno."
+
+      - name: refund_amount
+        description: "Valor reembolsado."

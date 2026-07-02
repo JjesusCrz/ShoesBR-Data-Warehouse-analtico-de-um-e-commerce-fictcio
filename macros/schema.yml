@@ -1,0 +1,26 @@
+version: 2
+
+macros:
+  - name: generate_schema_name
+    description: >
+      Sobrescreve a macro padrão `generate_schema_name` do dbt para
+      controlar o schema onde os modelos serão materializados.
+      Quando um schema customizado é informado, ele é utilizado
+      diretamente, evitando a concatenação automática realizada
+      pelo comportamento padrão do dbt.
+
+    arguments:
+      - name: custom_schema_name
+        type: string
+        description: >
+          Nome do schema definido no modelo ou no dbt_project.yml.
+          Quando não informado, será utilizado o schema padrão
+          configurado no target ativo.
+
+      - name: node
+        type: object
+        description: >
+          Objeto interno do dbt que representa o recurso atualmente
+          em compilação. Contém metadados como nome do modelo,
+          database, schema, caminho do arquivo e demais configurações
+          utilizadas durante o processo de compilação e execução.

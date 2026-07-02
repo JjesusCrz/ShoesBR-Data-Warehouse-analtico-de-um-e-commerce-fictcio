@@ -1,0 +1,87 @@
+version: 2
+
+sources:
+  - name: landing
+    description: "Camada de dados brutos do e-commerce ShoesBR."
+    database: shoesbr
+    schema: landing
+
+    tables:
+      - name: clientes
+        description: "Tabela de clientes do e-commerce."
+
+        columns:
+          - name: customer_id
+            description: "Identificador único do cliente."
+
+          - name: name
+            description: "Nome completo do cliente."
+
+          - name: address
+            description: "Endereço do cliente."
+
+          - name: phone
+            description: "Telefone do cliente."
+
+          - name: email
+            description: "E-mail do cliente."
+
+      - name: produtos
+        description: "Tabela de produtos do e-commerce."
+
+        columns:
+          - name: product_id
+            description: "Identificador único do produto."
+
+          - name: name
+            description: "Nome do produto."
+
+          - name: price
+            description: "Preço do produto."
+
+      - name: vendas
+        description: "Tabela de vendas."
+
+        columns:
+          - name: purchase_id
+            description: "Identificador único da venda."
+
+          - name: customer_id
+            description: "Identificador do cliente."
+
+          - name: product_id
+            description: "Identificador do produto."
+
+          - name: date
+            description: "Data da compra."
+
+          - name: quantity
+            description: "Quantidade comprada."
+
+          - name: total_price
+            description: "Valor total da compra."
+
+          - name: payment_method
+            description: "Forma de pagamento."
+
+      - name: estorno
+        description: "Tabela contendo registros de estornos."
+
+        columns:
+          - name: purchase_id
+            description: "Identificador da compra."
+
+          - name: customer_id
+            description: "Identificador do cliente."
+
+          - name: product_id
+            description: "Identificador do produto."
+
+          - name: refund_date
+            description: "Data do estorno."
+
+          - name: refund_reason
+            description: "Motivo do estorno."
+
+          - name: refund_amount
+            description: "Valor reembolsado."
